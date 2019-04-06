@@ -1,0 +1,47 @@
+<div class="card bg-dark text-white">
+  <div class="card-header" style="text-align: center">{{ !cliente.id? 'Crear Cliente': 'Editar cliente' }}</div>
+  <div class="card-body">
+    <form>
+      <div class="container">
+        <div class="row">
+          <div class="form-group col-sm">
+            <label for="nombre" class="col-form-label">Nombre</label>
+            <div class="col-sm-6"></div>
+            <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required
+              #nombre="ngModel">
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+              style="width:100%">
+              <div *ngIf="nombre?.errors.required" style="width:100%">
+                Este campo es requerido
+              </div>
+            </div>
+            <!--El ngMOdel apunta al atributo que estara en la calase componente -->
+          </div>
+          <div class="form-group col-sm">
+            <label for="apellido" class="col-form-label">Apellido</label>
+            <div class="col-sm-6"></div>
+            <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido" required
+              #apellido="ngModel">
+            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+              style="width:100%">
+              <div *ngIf="apellido?.errors.required" style="width:100%">
+                Este campo es requerido
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm">
+            <label for="email" class="col-form-label">Email</label>
+            <div class="col-sm-6"></div>
+            <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email" required>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container">
+  <button class="btn btn-primary btn-lg btn-block main-button" role="button" (click)='create()' *ngIf="!cliente.id else elseBlock">Crear +</button>
+  <ng-template #elseBlock>
+    <button class="btn btn-primary btn-lg btn-block main-button" role="button" (click)='update()'>Editar</button>
+  </ng-template>
+</div>
