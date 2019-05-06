@@ -41,17 +41,12 @@
 :: 1.0 Base CSS
 -------------------- */
 
-html{
-    position:relative;
-    min-height:100%;
-    }
-
-body {
-    font-family: 'Poppins', sans-serif;
-    margin-bottom:60px;
-    position: relative;
-    z-index: auto;
+* {
+    margin: 0;
+    padding: 0;
 }
+
+
 
 h1,
 h2,
@@ -441,7 +436,6 @@ li {
 
 .logo_area .yummy-logo {
     background:#fff;
-    font-family: 'Arial Rounded MT Bold';
     font-size: 60px;
     margin-bottom: 0;
     padding: 35px 0 20px 0;
@@ -1511,14 +1505,13 @@ li {
 	margin:-20px 0 0 30px;
     background:#fff;
     font-family: 'Shadows Into Light Two', cursive;
-    font-size: 60px;
+    font-size: 45px;
     margin-bottom: 0;
     padding: 35px 0 20px 0;
     color: #232d37;
 }
 
-html{
-    position:relative;
-    min-height:100%;
-    }
-
+.tituloModulos{  
+    font-size: 30px;
+    color: #232d37;
+}
