@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-orden',
-  templateUrl: './orden.component.html',
-  styleUrls: ['./orden.component.css']
+  templateUrl: './orden.component.html'
 })
 export class OrdenComponent implements OnInit {
 
