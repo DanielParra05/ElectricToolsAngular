@@ -9,9 +9,10 @@ import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
+import { FormsComponent } from './ordenes/forms.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { OrdenComponent } from './orden/orden.component'; // Modulo para trabajr con formularios
+import { OrdenComponent } from './ordenes/orden.component'; // Modulo para trabajr con formularios
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Home
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'clientes/form', component: FormComponent },
   { path: 'home', component: HomeComponent },
   { path: 'clientes/form/:id', component: FormComponent },
-  { path: 'orden', component: OrdenComponent }
+  { path: 'ordenes', component: OrdenComponent },
+  { path: 'ordenes/forms/:id', component: FormsComponent}
 ];
 
 @NgModule({
@@ -29,6 +31,7 @@ const routes: Routes = [
     FooterComponent,
     ClientesComponent,
     FormComponent,
+    FormsComponent,
     HomeComponent,
     OrdenComponent
   ],

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { CLIENTES } from './clientes.json';
 import { Cliente } from './cliente';
 import { of, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
 /**
 Clase service para comunicarse con los datos, (estos datos son traidos desde spring)
 aca debe ir toda la logica de negocio. El orden de las clases es
-el nombre como tal y el sufijo de el tipo de clase. Cleinte.component,
+el nombre como tal y el sufijo de el tipo de clase. Cliente.component,
 cliente.service ...etc...
 El decorador @ indica el tipo de clase que es angular, cual va a sr su rol,
 sus funcionalidades etc.
