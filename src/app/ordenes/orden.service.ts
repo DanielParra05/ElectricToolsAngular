@@ -30,7 +30,7 @@ export class OrdenService {
 
   create(orden: Orden): Observable<Orden> {
   return this.http.post(this.urlEndPoint, orden, { headers: this.httpHeaders }).pipe(
-    map((response: any) => response.cliente as Orden),
+    map((response: any) => response.orden as Orden),
     catchError(e => {
       console.error(e.error.mensaje);
       swal.fire('Error al crear la orden', e.error.mensaje, 'error');

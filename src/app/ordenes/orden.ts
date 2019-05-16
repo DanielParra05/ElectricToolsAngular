@@ -11,4 +11,5 @@ export class Orden {
   serial_articulo:string;
   valor:string;
   cliente:Cliente;
+  clienteId:number;
 }

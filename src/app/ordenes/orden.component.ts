@@ -14,9 +14,7 @@ export class OrdenComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.ordenService.getOrdenes().subscribe(
-        orden => this.orden = orden
-      );
+
     }
 
     delete(orden: Orden): void {

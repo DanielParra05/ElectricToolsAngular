@@ -25,7 +25,6 @@ export class ClienteService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getClientes(): Observable<Cliente[]> {
-    //    return of (CLIENTES);
     return this.http.get(this.urlEndPoint).pipe(
       map((response) => response as Cliente[])
     );
