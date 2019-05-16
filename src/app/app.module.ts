@@ -13,7 +13,7 @@ import { FormsComponent } from './ordenes/forms.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { OrdenComponent } from './ordenes/orden.component';
-import { AjustesComponent } from './ajustes/ajustes.component';
+import { AjustesComponent } from './ajustes/ajustes.component'; // Modulo para trabajr con formularios
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Home
@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'ordenes', component: OrdenComponent },
   { path: 'ordenes/form/:id', component: FormsComponent},
   { path: 'ordenes/form', component: FormsComponent},
-  { path: 'ajustes', component:AjustesComponent}
+  { path: 'ajustes', component: AjustesComponent}
 ];
 
 @NgModule({
@@ -37,8 +37,7 @@ const routes: Routes = [
     FormsComponent,
     HomeComponent,
     OrdenComponent,
-    AjustesComponent,
-    FormsAjustesComponent
+    AjustesComponent
   ],
   imports: [
     BrowserModule,

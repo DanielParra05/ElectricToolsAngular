@@ -35,69 +35,63 @@
 <!-- ****** Fin Encabezado ****** -->
 <div class="container">
   <div class="card bg-dark text-white">
-    <div class="card-header" style="text-align: center">{{!orden.id_orden?'Crear Orden':'Editar Orden'}}</div>
+    <div class="card-header" style="text-align: center">aca va numero de orden de servicio</div>
     <div class="card-body">
       <form>
         <div class="container">
-          <div class="form-group">
-              <label class="col-form-label" for="exampleFormControlSelect1">Seleccione Cliente:</label>
+            <div class="form-group">
+            <select class="selectpicker" data-live-search="true">
+                <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+              </select>             
+            </div>
             <div class="row">
-              <div class="form-group col-sm">
-                <label for="clienteId" class="col-form-label">Id Cliente:</label>
-                <div class="col-sm-6"></div>
-                <input type="text" class="form-control" name="cliente" [(ngModel)]="orden.clienteId" required
-                  #clienteId="ngModel">
-              </div>
               <div class="form-group col-sm">
                 <label for="articulo" class="col-form-label">Articulo:</label>
                 <div class="col-sm-6"></div>
-                <input type="text" class="form-control" name="articulo" [(ngModel)]="orden.nombre_articulo" required
-                  #articulo="ngModel">
+                <input type="text" class="form-control" name="articulo">              
               </div>
               <div class="form-group col-sm">
                 <label for="marca" class="col-form-label">Marca:</label>
                 <div class="col-sm-6"></div>
-                <input type="text" class="form-control"  name="marca" required [(ngModel)]="orden.marca_articulo" required
-                  #marca="ngModel">
+                <input type="text" class="form-control"  name="marca" required>
               </div>
             </div>
             <div class="row">
             <div class="form-group col-sm">
               <label for="modelo" class="col-form-label">Modelo:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control"  name="modelo" required [(ngModel)]="orden.modelo_articulo" required
-                #modelo="ngModel">
+              <input type="text" class="form-control"  name="modelo" required>
             </div>
             <div class="form-group col-sm">
               <label for="serie" class="col-form-label">N Serie:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control"  name="serie" required [(ngModel)]="orden.serial_articulo" required
-                #serial="ngModel">
+              <input type="text" class="form-control"  name="serie" required>
             </div>
             </div>
             <div class="row">
             <div class="form-group col-sm">
               <label for="daño" class="col-form-label">Daño:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control"  name="daño" required [(ngModel)]="orden.problema_reportado" required
-                #modelo="ngModel">
+              <input type="text" class="form-control"  name="daño" required>
             </div>
             <div class="form-group col-sm">
                 <label for="valor" class="col-form-label">Valor del arreglo:</label>
                 <div class="col-sm-6"></div>
-                <input type="text" class="form-control"  name="valor" required [(ngModel)]="orden.valor" required
-                  #valor="ngModel">
+                <input type="text" class="form-control"  name="valor" required>
               </div>
             </div>
+            <div class="form_group">
+                <label for="notas" class="col-form-label">Observaciones:</label>
+                <textarea class="form-control" id="notas"  required></textarea>
             </div>
         </div>
       </form>
     </div>
   </div>
   <div class="container" style="padding-bottom: 3%; padding-top: 2%;">
-    <button class="btn btn-primary btn-lg btn-block main-button" role="button" (click)='create()' *ngIf="!orden.id_orden else elseBlock">Crear</button>
-  <ng-template #elseBlock>
-    <button class="btn btn-primary btn-lg btn-block main-button" role="button" (click)='update()'>Editar</button>
-  </ng-template>
+    <button class="btn btn-primary btn-lg btn-block main-button" role="button" >Crear +</button>
+    
   </div>
   </div>
