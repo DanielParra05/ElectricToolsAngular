@@ -1,69 +1,86 @@
 <!-- ****** Breadcumb Area Start ****** -->
 <div class="row">
-    <!-- Logo Area Start -->
-    <div class="col-12">
-        <div class="tituloModulos text-center">
-            <a class="tituloModulos" href="/home" >Herramientas El&eacute;ctricas</a>
-        </div>
+  <!-- Logo Area Start -->
+  <div class="col-12">
+    <div class="tituloModulos text-center">
+      <a class="tituloModulos" href="/home">Herramientas El&eacute;ctricas</a>
     </div>
+  </div>
 </div>
 <div class="breadcumb-area" style="background-image: url(assets/img/modulos-img/cabecera5.jpg);">
   <div class="container h-100">
-      <div class="row h-100 align-items-center">
-          <div class="col-12">
-              <div class="bradcumb-title text-center">
-                  <h2>Ordenes</h2>
-              </div>
-          </div>
+    <div class="row h-100 align-items-center">
+      <div class="col-12">
+        <div class="bradcumb-title text-center">
+          <h2>Ordenes</h2>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 <div class="breadcumb-nav">
   <div class="container">
-      <div class="row">
-          <div class="col-12">
-              <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Ordenes</li>
-                  </ol>
-              </nav>
-          </div>
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ordenes</li>
+          </ol>
+        </nav>
       </div>
+    </div>
   </div>
 </div>
 <!-- ****** Breadcumb Area End ****** -->
 <div class="container">
-<div  class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
-  <div class="card-body text-primary">
-    <div class="my-2 text-center">
-      <button class="btn btn-primary btn-lg" type="button" [routerLink]="['/ordenes/form']">Nueva Orden</button>
-    </div>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="(Nombre o C&#233;dula)" aria-label="Recipient's username" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-primary" type="button">Buscar</button>
+  <div class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
+    <div class="card-body text-primary">
+      <div class="my-2 text-center">
+        <button class="btn btn-primary btn-lg" type="button" [routerLink]="['/ordenes/form']">Nueva Orden</button>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="(Nombre o C&#233;dula)" aria-label="Recipient's username"
+          aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button">Buscar</button>
+        </div>
+      </div>
+      <table id="table" class="table table-bordered table-stripped">
+        <thead class="thead-dark">
+          <tr>
+            <th style="text-align: center">Numero de Orden</th>
+            <th style="text-align: center">Cliente</th>
+            <th style="text-align: center">Fecha Ingreso</th>
+            <th style="text-align: center">Valor</th>
+            <th style="text-align: center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let orden of ordenes">
+            <td style="color: black">{{orden.problemaReportado}}</td>
+            <td style="color: black">{{orden.cliente.nombre}}</td>
+            <td style="color: black">{{orden.fechaEntrada}}</td>
+            <td style="color: black">$ {{orden.valor}}</td>
+            <td>
+              <div class="row">
+                <div class="col text-center">
+                  <button type="button" name="Editar" [routerLink]="['/ordenes/form/', orden.idOrden]"
+                    class="btn btn-primary btn-sm">Editar</button>
+                </div>
+                <div class="col text-center">
+                  <button type="button" name="Eliminar" (click)='delete(orden)'
+                    class="btn btn-danger btn-sm">Eliminar</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <div class="alert alert-info">
+        No hay registros en la base de datos.
       </div>
     </div>
-  <table id="table" class="table table-bordered table-stripped">
-      <thead  class="thead-dark">
-        <tr>
-          <th style ="text-align: center">Id</th>
-          <th style ="text-align: center">Nombre</th>
-          <th style ="text-align: center">Apellido</th>
-          <th style ="text-align: center">Email</th>
-          <th style ="text-align: center">Fecha</th>
-          <th style ="text-align: center">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-
-      
-      </tbody>
-    </table>
-    <div class="alert alert-info">
-      No hay registros en la base de datos.
-    </div>
   </div>
-</div>
 </div>

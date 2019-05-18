@@ -18,11 +18,11 @@ export class OrdenService {
 
   private urlEndPoint = 'http://localhost:8080/api/ordenes';
 
-  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http:HttpClient, private router:Router) { }
 
-  getOrdenes():Observable<Orden[]>{
+  getOrdenes(): Observable<Orden[]>{
     return this.http.get(this.urlEndPoint).pipe(
       map((response) => response as Orden[])
     );
