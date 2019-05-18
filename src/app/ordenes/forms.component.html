@@ -25,7 +25,7 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
             <li class="breadcrumb-item"><a href="/ordenes"><i aria-hidden="true"></i>Ordenes</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Crear Orden</li>
+            <li class="breadcrumb-item active" aria-current="page">Nueva Orden</li>
           </ol>
         </nav>
       </div>
@@ -33,6 +33,7 @@
   </div>
 </div>
 <!-- ****** Fin Encabezado ****** -->
+<!-- Inicia Formulario de ordenes -->
 <div class="container">
   <div class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
     <div class="card-header bg-dark text-white" style="text-align: center; font-weight: bold;">Numero</div>
@@ -42,9 +43,9 @@
           <div class="row">
             <div class="form-group col-sm">
               <label for="selectCliente" style="font-weight: bold;" class="col-form-label">Cliente:</label>
-              <select id="selectCliente" class="selectpicker" data-live-search="true" data-width="100%"
+              <select  [(ngModel)]="orden.cliente" id="selectCliente" class="selectpicker" data-live-search="true" data-width="100%"
                 title="Elija un cliente...">
-                <option *ngFor="let cliente of clientes" [value]="cliente.id">
+                <option *ngFor="let cliente of listClientes" [value]="cliente">
                   {{cliente.nombre}} - {{cliente.email}}
                 </option>
               </select>
@@ -52,41 +53,41 @@
             <div class="form-group col-sm">
               <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha de ingreso:</label>
               <div class="col-sm-6"></div>
-              <input type="date" class="form-control" id="fecha" required>
+              <input  [(ngModel)]="orden.fechaEntrada" type="date" class="form-control" id="fecha" required>
             </div>
           </div>
           <div class="row">
             <div class="form-group col-sm">
               <label for="articulo" style="font-weight: bold;" class="col-form-label">Articulo:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control" id="articulo">
+              <input  [(ngModel)]="orden.nombreArticulo" type="text" class="form-control" id="articulo">
             </div>
             <div class="form-group col-sm">
               <label for="marca" style="font-weight: bold;" class="col-form-label">Marca:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control" id="marca" required>
+              <input  [(ngModel)]="orden.marcaArticulo" type="text" class="form-control" id="marca" required>
             </div>
           </div>
           <div class="row">
             <div class="form-group col-sm">
               <label for="modelo" style="font-weight: bold;" class="col-form-label">Modelo:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control" id="modelo" required>
+              <input [(ngModel)]="orden.modeloArticulo" type="text" class="form-control" id="modelo" required>
             </div>
             <div class="form-group col-sm">
               <label for="serie" style="font-weight: bold;" class="col-form-label">N&#186; Serie:</label>
               <div class="col-sm-6"></div>
-              <input type="number" class="form-control" id="serie" required>
+              <input type="number" [(ngModel)]="orden.serialArticulo" class="form-control" id="serie" required>
             </div>
           </div>
           <div class="row">
             <div class="form-group col-sm">
-              <label for="daño" style="font-weight: bold;" class="col-form-label">Daño:</label>
+              <label for="daño"  [(ngModel)]="orden.problemaReportado" style="font-weight: bold;" class="col-form-label">Daño:</label>
               <div class="col-sm-6"></div>
               <input type="text" class="form-control" id="daño" required>
             </div>
             <div class="form-group col-sm">
-              <label for="valor" style="font-weight: bold;" class="col-form-label">Valor del arreglo:</label>
+              <label for="valor" [(ngModel)]="orden.valor" style="font-weight: bold;" class="col-form-label">Valor del arreglo:</label>
               <div class="col-sm-6"></div>
               <input type="number" class="form-control" id="valor" required>
             </div>
@@ -97,7 +98,7 @@
           </div>
         </div>
         <div class="text-center">
-          <button class="btn btn-primary btn-lg main-button" role="button">Crear</button>
+          <button class="btn btn-primary btn-lg" role="button">Crear</button>
         </div>
       </form>
     </div>

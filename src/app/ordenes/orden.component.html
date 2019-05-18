@@ -34,11 +34,10 @@
 </div>
 <!-- ****** Breadcumb Area End ****** -->
 <div class="container">
-<div class="card border-primary mb-3">
+<div  class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
   <div class="card-body text-primary">
-    <h5 class="card-title">Listado de Ordenes</h5>
     <div class="my-2 text-center">
-      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/ordenes/form']">Nueva Orden</button>
+      <button class="btn btn-primary btn-lg" type="button" [routerLink]="['/ordenes/form']">Nueva Orden</button>
     </div>
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="(Nombre o C&#233;dula)" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -46,7 +45,7 @@
         <button class="btn btn-outline-primary" type="button">Buscar</button>
       </div>
     </div>
-  <table id="table" class="table table-bordered table-stripped" *ngIf="clientes?.length>0">
+  <table id="table" class="table table-bordered table-stripped">
       <thead  class="thead-dark">
         <tr>
           <th style ="text-align: center">Id</th>
@@ -58,28 +57,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cliente of clientes">
-          <td style="color: black">{{cliente.id}}</td>
-          <td style="color: black">{{cliente.nombre}}</td>
-          <td style="color: black">{{cliente.apellido}}</td>
-          <td style="color: black">{{cliente.email}}</td>
-          <td style="color: black">{{cliente.createAt}}</td>
-          <td>
-              <div class="row text-center">
-                  <div class="col">
-                    <button type = "button" name = "Editar" [routerLink]="['/clientes/form/', cliente.id]"
-                     class = "btn btn-primary btn-sm">Editar</button>
-                  </div>
-                  <div class="col">
-                    <button type = "button" name = "Eliminar" (click)='delete(cliente)'
-                    class = "btn btn-danger btn-sm">Eliminar</button>
-                  </div>
-                </div>
-          </td>
-        </tr>
+
+      
       </tbody>
     </table>
-    <div *ngIf="clientes?.length==0" class="alert alert-info">
+    <div class="alert alert-info">
       No hay registros en la base de datos.
     </div>
   </div>

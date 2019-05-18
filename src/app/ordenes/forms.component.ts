@@ -14,24 +14,24 @@ declare var $: any;
   styleUrls: ['./forms.component.css']
 })
 export class FormsComponent implements OnInit, AfterViewInit {
-
   public orden: Orden = new Orden();
-  clientes: Cliente[];
-
-  constructor(private clienteService: ClienteService, private ordenService: OrdenService,
-     private router: Router, private activatedRoute: ActivatedRoute) {
-  }
-
-  ngOnInit() {
-    this.clienteService.getClientes().subscribe(
-      clientes => this.clientes = clientes
-    );
-    this.cargarOrden();
-  }
+  listClientes: Cliente[];
 
   ngAfterViewInit(): void {
     $('.selectpicker').selectpicker();
   }
+
+  constructor(private clienteService: ClienteService, private ordenService: OrdenService,
+              private router: Router, private activatedRoute: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    this.clienteService.getClientes().subscribe(
+      clientes => this.listClientes = clientes
+    );
+    this.cargarOrden();
+  }
+
   public cargarOrden(): void {
     this.activatedRoute.params.subscribe(params => {
       let id = params.id;
