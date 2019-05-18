@@ -45,7 +45,7 @@
               <label for="selectCliente" style="font-weight: bold;" class="col-form-label">Cliente:</label>
               <select [(ngModel)]="orden.cliente" name="selectCliente" class="selectpicker form-control" data-live-search="true"
                 data-width="100%" title="Elija un cliente..." #cliente="ngModel">
-                <option *ngFor="let cliente of listClientes" [value]="cliente">
+                <option *ngFor="let cliente of listClientes" [ngValue]="cliente">
                   {{cliente.nombre}} - {{cliente.email}}
                 </option>
               </select>

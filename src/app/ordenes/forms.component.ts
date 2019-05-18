@@ -15,6 +15,7 @@ declare var $: any;
 })
 export class FormsComponent implements OnInit, AfterViewInit {
   public orden: Orden = new Orden();
+  public idCliente: number;
   listClientes: Cliente[];
 
   ngAfterViewInit(): void {
@@ -26,10 +27,12 @@ export class FormsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.clienteService.getClientes().subscribe(
-      clientes => this.listClientes = clientes
-    );
     this.cargarOrden();
+    this.clienteService.getClientes().subscribe(
+        clientes => {
+        this.listClientes = clientes;
+      }
+      );
   }
 
   public cargarOrden(): void {

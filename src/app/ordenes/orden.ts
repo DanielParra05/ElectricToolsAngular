@@ -9,7 +9,6 @@ export class Orden {
   nombreArticulo: string;
   problemaReportado: string;
   serialArticulo: string;
-  valor: string;
+  valor: number;
   cliente: Cliente;
-  clienteId: number;
 }
