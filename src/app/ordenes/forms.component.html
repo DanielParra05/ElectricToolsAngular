@@ -1,97 +1,105 @@
 <!-- ******Inicio ****** -->
 <div class="row">
   <div class="col-12">
-      <div class="tituloModulos text-center">
-          <a class="tituloModulos" href="/home" >Herramientas El&eacute;ctricas</a>
-      </div>
+    <div class="tituloModulos text-center">
+      <a class="tituloModulos" href="/home">Herramientas El&eacute;ctricas</a>
+    </div>
   </div>
 </div>
 <div class="breadcumb-area" style="background-image: url(assets/img/modulos-img/cabecera3.jpg);">
-<div class="container h-100">
+  <div class="container h-100">
     <div class="row h-100 align-items-center">
-        <div class="col-12">
-            <div class="bradcumb-title text-center">
-                <h2>Crear Orden</h2>
-            </div>
+      <div class="col-12">
+        <div class="bradcumb-title text-center">
+          <h2>Crear Orden</h2>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 </div>
 <div class="breadcumb-nav">
-<div class="container">
+  <div class="container">
     <div class="row">
-        <div class="col-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-                    <li class="breadcrumb-item"><a href="/ordenes"><i aria-hidden="true"></i>Ordenes</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Crear Orden</li>
-                </ol>
-            </nav>
-        </div>
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+            <li class="breadcrumb-item"><a href="/ordenes"><i aria-hidden="true"></i>Ordenes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Crear Orden</li>
+          </ol>
+        </nav>
+      </div>
     </div>
-</div>
+  </div>
 </div>
 <!-- ****** Fin Encabezado ****** -->
 <div class="container">
-  <div class="card bg-dark text-white">
-    <div class="card-header" style="text-align: center">aca va numero de orden de servicio</div>
+  <div class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
+    <div class="card-header bg-dark text-white" style="text-align: center; font-weight: bold;">Numero</div>
     <div class="card-body">
       <form>
         <div class="container">
-            <div class="form-group">
-            <select class="selectpicker" data-live-search="true">
-                <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                <option data-tokens="frosting">Sugar, Spice and all things nice</option>
-              </select>             
-            </div>
-            <div class="row">
-              <div class="form-group col-sm">
-                <label for="articulo" class="col-form-label">Articulo:</label>
-                <div class="col-sm-6"></div>
-                <input type="text" class="form-control" name="articulo">              
-              </div>
-              <div class="form-group col-sm">
-                <label for="marca" class="col-form-label">Marca:</label>
-                <div class="col-sm-6"></div>
-                <input type="text" class="form-control"  name="marca" required>
-              </div>
-            </div>
-            <div class="row">
+          <div class="row">
             <div class="form-group col-sm">
-              <label for="modelo" class="col-form-label">Modelo:</label>
+              <label for="selectCliente" style="font-weight: bold;" class="col-form-label">Cliente:</label>
+              <select id="selectCliente" class="selectpicker" data-live-search="true" data-width="100%"
+                title="Elija un cliente...">
+                <option *ngFor="let cliente of clientes" [value]="cliente.id">
+                  {{cliente.nombre}} - {{cliente.email}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-sm">
+              <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha de ingreso:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control"  name="modelo" required>
+              <input type="date" class="form-control" id="fecha" required>
             </div>
+          </div>
+          <div class="row">
             <div class="form-group col-sm">
-              <label for="serie" class="col-form-label">N Serie:</label>
+              <label for="articulo" style="font-weight: bold;" class="col-form-label">Articulo:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control"  name="serie" required>
+              <input type="text" class="form-control" id="articulo">
             </div>
-            </div>
-            <div class="row">
             <div class="form-group col-sm">
-              <label for="daño" class="col-form-label">Daño:</label>
+              <label for="marca" style="font-weight: bold;" class="col-form-label">Marca:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control"  name="daño" required>
+              <input type="text" class="form-control" id="marca" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm">
+              <label for="modelo" style="font-weight: bold;" class="col-form-label">Modelo:</label>
+              <div class="col-sm-6"></div>
+              <input type="text" class="form-control" id="modelo" required>
             </div>
             <div class="form-group col-sm">
-                <label for="valor" class="col-form-label">Valor del arreglo:</label>
-                <div class="col-sm-6"></div>
-                <input type="text" class="form-control"  name="valor" required>
-              </div>
+              <label for="serie" style="font-weight: bold;" class="col-form-label">N&#186; Serie:</label>
+              <div class="col-sm-6"></div>
+              <input type="number" class="form-control" id="serie" required>
             </div>
-            <div class="form_group">
-                <label for="notas" class="col-form-label">Observaciones:</label>
-                <textarea class="form-control" id="notas"  required></textarea>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm">
+              <label for="daño" style="font-weight: bold;" class="col-form-label">Daño:</label>
+              <div class="col-sm-6"></div>
+              <input type="text" class="form-control" id="daño" required>
             </div>
+            <div class="form-group col-sm">
+              <label for="valor" style="font-weight: bold;" class="col-form-label">Valor del arreglo:</label>
+              <div class="col-sm-6"></div>
+              <input type="number" class="form-control" id="valor" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notas" style="font-weight: bold;" class="col-form-label">Observaciones:</label>
+            <textarea class="form-control" id="notas" required></textarea>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg main-button" role="button">Crear</button>
         </div>
       </form>
     </div>
   </div>
-  <div class="container" style="padding-bottom: 3%; padding-top: 2%;">
-    <button class="btn btn-primary btn-lg btn-block main-button" role="button" >Crear +</button>
-    
-  </div>
-  </div>
+</div>

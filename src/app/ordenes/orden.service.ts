@@ -51,7 +51,7 @@ export class OrdenService {
 }
 
 public update(orden: Orden): Observable<any> {
-  return this.http.put<any>(`${this.urlEndPoint}/${orden.id_orden}`, orden, { headers: this.httpHeaders }).pipe(
+  return this.http.put<any>(`${this.urlEndPoint}/${orden.idOrden}`, orden, { headers: this.httpHeaders }).pipe(
     catchError(e => {
       this.router.navigate(['/ordenes']);
       console.error(e.error.mensaje);

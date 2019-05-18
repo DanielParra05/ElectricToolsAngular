@@ -27,7 +27,7 @@ export class OrdenComponent implements OnInit {
       });
       swalWithBootstrapButtons.fire({
         title: 'Estas seguro?',
-        text: `¿Desea eliminar la orden ${orden.nombre_articulo}?`,
+        text: `¿Desea eliminar la orden ${orden.nombreArticulo}?`,
         type: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Si, eliminar!',
@@ -35,7 +35,7 @@ export class OrdenComponent implements OnInit {
         reverseButtons: true
       }).then((result) => {
         if (result.value) {
-          this.ordenService.delete(orden.id_orden).subscribe(
+          this.ordenService.delete(orden.idOrden).subscribe(
             response =>
             this.orden = this.orden.filter(cli => cli !== orden));
           swalWithBootstrapButtons.fire(

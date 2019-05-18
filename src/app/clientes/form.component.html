@@ -1,84 +1,93 @@
 <!-- ******Inicio ****** -->
 <div class="row">
   <div class="col-12">
-      <div class="tituloModulos text-center">
-          <a class="tituloModulos" href="/home" >Herramientas El&eacute;ctricas</a>
-      </div>
+    <div class="tituloModulos text-center">
+      <a class="tituloModulos" href="/home">Herramientas El&eacute;ctricas</a>
+    </div>
   </div>
 </div>
 <div class="breadcumb-area" style="background-image: url(assets/img/modulos-img/cabecera1.jpg);">
-<div class="container h-100">
+  <div class="container h-100">
     <div class="row h-100 align-items-center">
-        <div class="col-12">
-            <div class="bradcumb-title text-center">
-                <h2>Crear Cliente</h2>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<div class="breadcumb-nav">
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-                    <li class="breadcrumb-item"><a href="/clientes"><i aria-hidden="true"></i>Clientes</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Crear Cliente</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-</div>
-</div>
-<!-- ****** Fin Encabezado ****** -->
-<div class="container">
-<div class="card bg-dark text-white">
-  <div class="card-header" style="text-align: center">{{ !cliente.id? 'Crear Cliente': 'Editar cliente' }}</div>
-  <div class="card-body">
-    <form>
-      <div class="container">
-        <div class="row">
-          <div class="form-group col-sm">
-            <label for="nombre" class="col-form-label">Nombre</label>
-            <div class="col-sm-6"></div>
-            <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required
-              #nombre="ngModel">
-            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
-              style="width:100%">
-              <div *ngIf="nombre?.errors.required" style="width:100%">
-                Este campo es requerido
-              </div>
-            </div>
-            <!--El ngMOdel apunta al atributo que estara en la calase componente -->
-          </div>
-          <div class="form-group col-sm">
-            <label for="apellido" class="col-form-label">Apellido</label>
-            <div class="col-sm-6"></div>
-            <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido" required
-              #apellido="ngModel">
-            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
-              style="width:100%">
-              <div *ngIf="apellido?.errors.required" style="width:100%">
-                Este campo es requerido
-              </div>
-            </div>
-          </div>
-          <div class="form-group col-sm">
-            <label for="email" class="col-form-label">Email</label>
-            <div class="col-sm-6"></div>
-            <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email" required>
-          </div>
+      <div class="col-12">
+        <div class="bradcumb-title text-center">
+          <h2>Crear Cliente</h2>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </div>
-<div class="container" style="padding-bottom: 3%;">
-  <button class="btn btn-primary btn-lg btn-block main-button" role="button" (click)='create()' *ngIf="!cliente.id else elseBlock">Crear +</button>
-  <ng-template #elseBlock>
-    <button class="btn btn-primary btn-lg btn-block main-button" role="button" (click)='update()'>Editar</button>
-  </ng-template>
+<div class="breadcumb-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+            <li class="breadcrumb-item"><a href="/clientes"><i aria-hidden="true"></i>Clientes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Crear Cliente</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- ****** Fin Encabezado ****** -->
+
+
+<div class="container">
+  <div class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
+    <div class="card-header bg-dark text-white" style="text-align: center; font-weight: bold;">
+      {{ !cliente.id? 'Crear Cliente': 'Editar cliente' }}</div>
+    <div class="card-body">
+      <form>
+        <div class="container">
+          <div class="row">
+            <div class="form-group col-sm">
+              <label for="nombre" class="col-form-label">Nombre</label>
+              <div class="col-sm-6"></div>
+              <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required
+                #nombre="ngModel">
+              <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+                style="width:100%">
+                <div *ngIf="nombre?.errors.required" style="width:100%">
+                  Este campo es requerido
+                </div>
+              </div>
+              <!--El ngMOdel apunta al atributo que estara en la calase componente -->
+            </div>
+            <div class="form-group col-sm">
+              <label for="apellido" class="col-form-label">Apellido</label>
+              <div class="col-sm-6"></div>
+              <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido" required
+                #apellido="ngModel">
+              <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+                style="width:100%">
+                <div *ngIf="apellido?.errors.required" style="width:100%">
+                  Este campo es requerido
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-sm">
+              <label for="email" class="col-form-label">Email</label>
+              <div class="col-sm-6"></div>
+              <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email" required>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button  class="btn btn-primary btn-lg main-button" role="button" (click)='create()'
+            *ngIf="!cliente.id else elseBlock">Crear</button>
+          <ng-template #elseBlock>
+            <button c class="btn btn-primary btn-lg main-button" role="button" (click)='update()'>Editar</button>
+          </ng-template>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
+
+
+
+
+
