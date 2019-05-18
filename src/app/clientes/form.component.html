@@ -43,7 +43,7 @@
         <div class="container">
           <div class="row">
             <div class="form-group col-sm">
-              <label  for="nombre" style="font-weight: bold;" class="col-form-label">Nombre:</label>
+              <label for="nombre" style="font-weight: bold;" class="col-form-label">Nombre:</label>
               <div class="col-sm-6"></div>
               <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required
                 #nombre="ngModel">
@@ -75,7 +75,7 @@
           </div>
         </div>
         <div class="text-center">
-          <button  class="btn btn-primary btn-lg" role="button" (click)='create()'
+          <button class="btn btn-primary btn-lg" role="button" (click)='create()'
             *ngIf="!cliente.id else elseBlock">Crear</button>
           <ng-template #elseBlock>
             <button c class="btn btn-primary btn-lg" role="button" (click)='update()'>Editar</button>
@@ -85,8 +85,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
