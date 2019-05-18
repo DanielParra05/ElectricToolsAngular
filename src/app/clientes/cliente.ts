@@ -1,10 +1,10 @@
+import { Orden } from '../ordenes/orden';
+
 export class Cliente {
     id: number;
     nombre: string;
     apellido: string;
-    createAt: string;
-    email: string;
+    ordenes: Orden;
     cedula: string;
-    direccion: string;
     telefono: string;
 }
