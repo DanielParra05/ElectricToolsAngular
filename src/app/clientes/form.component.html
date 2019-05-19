@@ -23,7 +23,7 @@
       <div class="col-12">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
             <li class="breadcrumb-item"><a href="/clientes"><i aria-hidden="true"></i>Clientes</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ !cliente.id? 'Nuevo Cliente': 'Editar' }}</li>
           </ol>
@@ -53,7 +53,7 @@
                   Este campo es requerido
                 </div>
               </div>
-              <!--El ngMOdel apunta al atributo que estara en la calase componente -->
+              <!--El ngModel apunta al atributo que estara en la calase componente -->
             </div>
             <div class="form-group col-sm">
               <label for="apellido" style="font-weight: bold;" class="col-form-label">Apellido:</label>
@@ -71,24 +71,34 @@
               <label for="cedula" style="font-weight: bold;" class="col-form-label">Cedula:</label>
               <div class="col-sm-6"></div>
               <input type="text" class="form-control" [(ngModel)]="cliente.cedula" name="cedula" required
-                #apellido="ngModel">
-             
-                <div *ngIf="cedula?.errors.required" style="width:100%">
-                  Este campo es requerido
-                </div>
+                #cedula="ngModel">
+                <div class="alert alert-danger" *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)"
+                style="width:100%">
+              <div *ngIf="cedula?.errors.required" style="width:100%">
+                Este campo es requerido
+              </div>
+              </div>
             </div>
             <div class="form-group col-sm">
               <label style="font-weight: bold;" for="telefono" class="col-form-label">Celular:</label>
               <div class="col-sm-6"></div>
-              <input type="text" class="form-control" [(ngModel)]="cliente.telefono" name="telefono" required>
+              <input type="text" class="form-control" [(ngModel)]="cliente.telefono" name="telefono" required
+              #telefono="ngModel">
+              <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)"
+              style="width:100%">
+            <div *ngIf="telefono?.errors.required" style="width:100%">
+              Este campo es requerido
+            </div>
+            </div>
             </div>
           </div>
         </div>
         <div class="text-center">
-          <button class="btn btn-primary btn-lg" role="button" (click)='create()' *ngIf="!cliente.id; else elseBlock">Crear</button>
+          <button class="btn btn-primary btn-lg" role="button" (click)='create()'
+            *ngIf="!cliente.id; else elseBlock">Crear</button>
           <ng-template #elseBlock>
-            <button class="btn btn-primary btn-lg" role="button" (click)='update()'>Editar</button>
-          </ng-template>'>
+            <button class="btn btn-primary btn-lg" role="button" (click)='update()'>Aceptar</button>
+          </ng-template>
         </div>
       </form>
     </div>

@@ -15,7 +15,7 @@ export class OrdenComponent implements OnInit {
 
   ngOnInit() {
     this.ordenService.getOrdenes().subscribe(
-      clientes => this.ordenes = clientes
+      ordenes => this.ordenes = ordenes
     );
   }
 

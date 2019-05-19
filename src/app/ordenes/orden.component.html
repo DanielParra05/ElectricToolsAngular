@@ -24,7 +24,7 @@
       <div class="col-12">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
             <li class="breadcrumb-item active" aria-current="page">Ordenes</li>
           </ol>
         </nav>
@@ -46,10 +46,10 @@
           <button class="btn btn-outline-primary" type="button">Buscar</button>
         </div>
       </div>
-      <table id="table" class="table table-bordered table-stripped">
+      <table id="table" class="table table-bordered table-striped" *ngIf="ordenes?.length>0">
         <thead class="thead-dark">
           <tr>
-            <th style="text-align: center">Numero de Orden</th>
+            <th style="text-align: center">N&#186; de Orden</th>
             <th style="text-align: center">Cliente</th>
             <th style="text-align: center">Fecha Ingreso</th>
             <th style="text-align: center">Valor</th>
@@ -58,27 +58,35 @@
         </thead>
         <tbody>
           <tr *ngFor="let orden of ordenes">
-            <td style="color: black">{{orden.problemaReportado}}</td>
-            <td style="color: black">{{orden.cliente.nombre}}</td>
-            <td style="color: black">{{orden.fechaEntrada}}</td>
-            <td style="color: black">$ {{orden.valor}}</td>
+            <td class="text-center" style="color: black">{{orden.idOrden}}</td>
+            <td class="text-center" style="color: black">{{orden.cliente.nombre}} {{orden.cliente.apellido}}</td>
+            <td class="text-center" style="color: black">{{orden.fechaEntrada}}</td>
+            <td class="text-center" style="color: black">$ {{orden.valor}}</td>
             <td>
               <div class="row">
                 <div class="col text-center">
-                  <button type="button" name="Editar" [routerLink]="['/ordenes/form/', orden.idOrden]"
-                    class="btn btn-primary btn-sm">Editar</button>
+                  <div><a [routerLink]="['/ordenes/form/', orden.idOrden]"><img class="iconosTamanio"
+                        src="../../assets/img/iconos/edit.png"></a></div>
                 </div>
                 <div class="col text-center">
-                  <button type="button" name="Eliminar" (click)='delete(orden)'
-                    class="btn btn-danger btn-sm">Eliminar</button>
+                  <div><a style="cursor: pointer" (click)='delete(orden)'><img class="iconosTamanio"
+                        src="../../assets/img/iconos/delete.png"></a></div>
+                </div>
+                <div class="col text-center">
+                  <div><a style="cursor: pointer"><img class="iconosTamanio"
+                        src="../../assets/img/iconos/print.png"></a></div>
+                </div>
+                <div class="col text-center">
+                  <div><a style="cursor: pointer"><img class="iconosTamanio"
+                        src="../../assets/img/iconos/salida.png"></a>
+                  </div>
                 </div>
               </div>
             </td>
           </tr>
-
         </tbody>
       </table>
-      <div class="alert alert-info">
+      <div *ngIf="ordenes?.length==0" class="alert alert-info">
         No hay registros en la base de datos.
       </div>
     </div>
