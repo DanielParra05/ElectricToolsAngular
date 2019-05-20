@@ -1,14 +1,16 @@
 import { Cliente } from '../clientes/cliente';
 
 export class Orden {
-  idOrden: number;
-  fechaEntrada: Date;
-  fechSalida: Date;
+  id: number;
+  fechaEntrada: string;
+  fechSalida: string;
+  observaciones: string;
+  cliente: Cliente;
+  nombreArticulo: string;
   marcaArticulo: string;
   modeloArticulo: string;
-  nombreArticulo: string;
-  problemaReportado: string;
   serialArticulo: string;
-  valor: number;
-  cliente: Cliente;
+  problemaReportado: string;
+  valorArreglo: number;
+  valorRepuestos: number;
 }

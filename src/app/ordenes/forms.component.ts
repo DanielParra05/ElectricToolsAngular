@@ -50,7 +50,7 @@ export class FormsComponent implements OnInit, AfterViewInit {
     this.ordenService.create(this.orden).subscribe(
       orden => {
         this.router.navigate(['/ordenes']);
-        swal.fire('Orden guardada', 'La orden' + orden.idOrden + 'con cliente'
+        swal.fire('Orden guardada', 'La orden' + orden.id + 'con cliente'
           + orden.cliente.nombre + ' ha sido creado con exito!', 'success');
       }
     );

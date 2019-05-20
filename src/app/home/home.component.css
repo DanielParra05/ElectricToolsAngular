@@ -21,7 +21,7 @@
 }
 
 .single_catagory:hover .catagory-title {
-    background-color: #fc6c3f;
+    background-color: #4285F6;
 }
 
 .catagory-title a > h5 {
@@ -43,7 +43,7 @@
 }
 
 .single-icon > a:hover {
-    color: #fc6c3f;
+    color: #4285F6;
 }
 
 .single-icon > a > i {

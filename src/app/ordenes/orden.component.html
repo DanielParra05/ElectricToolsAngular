@@ -58,14 +58,14 @@
         </thead>
         <tbody>
           <tr *ngFor="let orden of ordenes">
-            <td class="text-center" style="color: black">{{orden.idOrden}}</td>
+            <td class="text-center" style="color: black">{{orden.id}}</td>
             <td class="text-center" style="color: black">{{orden.cliente.nombre}} {{orden.cliente.apellido}}</td>
             <td class="text-center" style="color: black">{{orden.fechaEntrada}}</td>
-            <td class="text-center" style="color: black">$ {{orden.valor}}</td>
+            <td class="text-center" style="color: black">$ {{orden.valorArreglo}}</td>
             <td>
               <div class="row">
                 <div class="col text-center">
-                  <div><a [routerLink]="['/ordenes/form/', orden.idOrden]"><img class="iconosTamanio"
+                  <div><a [routerLink]="['/ordenes/form/', orden.id]"><img class="iconosTamanio"
                         src="../../assets/img/iconos/edit.png"></a></div>
                 </div>
                 <div class="col text-center">
@@ -73,11 +73,11 @@
                         src="../../assets/img/iconos/delete.png"></a></div>
                 </div>
                 <div class="col text-center">
-                  <div><a style="cursor: pointer"><img class="iconosTamanio"
+                  <div><a style="cursor: pointer" (click)='print(orden)'><img class="iconosTamanio"
                         src="../../assets/img/iconos/print.png"></a></div>
                 </div>
                 <div class="col text-center">
-                  <div><a style="cursor: pointer"><img class="iconosTamanio"
+                  <div><a style="cursor: pointer" ><img class="iconosTamanio"
                         src="../../assets/img/iconos/salida.png"></a>
                   </div>
                 </div>
