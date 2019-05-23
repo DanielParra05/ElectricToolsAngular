@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import * as jsPDF from 'jspdf';
 import { Ajustes } from '../ajustes/ajustes';
 
+
+
 @Component({
   selector: 'app-orden',
   templateUrl: './orden.component.html'
@@ -12,6 +14,7 @@ import { Ajustes } from '../ajustes/ajustes';
 export class OrdenComponent implements OnInit {
 
   public ordenes: Orden[];
+  
   constructor(private ordenService: OrdenService) {
   }
 
@@ -25,6 +28,10 @@ export class OrdenComponent implements OnInit {
     const doc = new jsPDF();
     doc.text('Epa colombia', 10, 10);
     doc.save('supongoQueEsteEsEl-Nombre.pdf');
+  }
+
+  openPop():void{
+
   }
 
   delete(orden: Orden): void {

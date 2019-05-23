@@ -13,7 +13,8 @@ import { FormsComponent } from './ordenes/forms.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { OrdenComponent } from './ordenes/orden.component';
-import { AjustesComponent } from './ajustes/ajustes.component'; // Modulo para trabajr con formularios
+import { AjustesComponent } from './ajustes/ajustes.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Home
@@ -37,13 +38,14 @@ const routes: Routes = [
     FormsComponent,
     HomeComponent,
     OrdenComponent,
-    AjustesComponent
+    AjustesComponent,
+   
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
   ],
   providers: [
     ClienteService], // Providers es para los servicios de la app
