@@ -30,7 +30,7 @@ export class OrdenComponent implements OnInit {
     doc.save('supongoQueEsteEsEl-Nombre.pdf');
   }
 
-  openPop():void{
+  openPop():void {
 
   }
 
