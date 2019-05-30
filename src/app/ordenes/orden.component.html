@@ -1,38 +1,27 @@
-<!-- ****** Breadcumb Area Start ****** -->
-<!--Aqui Empieza el popup-->
-
-<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+<!-- Inicio pop Up -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ModalCenterTitle">Tipo de Reporte</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Generar Salida</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="dropdown show">
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Seleccione Una Opcion
-          </a>
-        
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">Entrada</a>
-            <a class="dropdown-item" href="#">Salida/a>
-          </div>
-        </div>
+        ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
 <!--Aqui Termina el popup-->
 
 
+<!-- ****** Breadcumb Area Start ****** -->
 <div class="row">
   <!-- Logo Area Start -->
   <div class="col-12">
@@ -111,7 +100,7 @@
                         src="../../assets/img/iconos/print.png"></a></div>
                 </div>
                 <div class="col text-center">
-                  <div><a style="cursor: pointer"><img class="iconosTamanio"
+                  <div><a style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter"><img class="iconosTamanio"
                         src="../../assets/img/iconos/salida.png"></a>
                   </div>
                 </div>
