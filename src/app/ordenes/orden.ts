@@ -11,6 +11,7 @@ export class Orden {
   modeloArticulo: string;
   serialArticulo: string;
   problemaReportado: string;
+  estado: string;
   valorArreglo: number;
   valorRepuestos: number;
 }

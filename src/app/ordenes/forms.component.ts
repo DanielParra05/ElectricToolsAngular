@@ -27,12 +27,12 @@ export class FormsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.cargarOrden();
     this.clienteService.getClientes().subscribe(
-        clientes => {
+      clientes => {
         this.listClientes = clientes;
       }
       );
+    this.cargarOrden();
   }
 
   public cargarOrden(): void {
@@ -42,6 +42,7 @@ export class FormsComponent implements OnInit, AfterViewInit {
         this.ordenService.getOrden(id).subscribe((orden) => this.orden = orden);
       }
     });
+    console.log(this.orden);
   }
 
   public create(): void {
@@ -57,10 +58,19 @@ export class FormsComponent implements OnInit, AfterViewInit {
   }
 
   update(): void {
+    //console.log(this.orden);
     this.ordenService.update(this.orden).subscribe(
       json => {
         this.router.navigate(['/ordenes']);
         swal.fire('Orden actualizada', `${json.mensaje}: ${json.orden.id_orden}`, 'success');
       });
   }
+
+  compararCliente(obj1: Cliente, obj2: Cliente): boolean {
+    if (obj1 === undefined && obj2 === undefined) {
+        return true;
+    }
+    return obj1 === undefined || obj2 === undefined || obj1 === null || obj2 === null ? false : obj1.id === obj2.id;
+  }
 }
+

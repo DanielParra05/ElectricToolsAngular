@@ -40,8 +40,8 @@
         <button class="btn btn-primary btn-lg" type="button" [routerLink]="['/ordenes/form']">Nueva Orden</button>
       </div>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="(Nombre, C&#233;dula o N&#186; de Orden)" aria-label="Recipient's username"
-          aria-describedby="basic-addon2">
+        <input type="text" class="form-control" placeholder="(Nombre, C&#233;dula o N&#186; de Orden)"
+          aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
           <button class="btn btn-outline-primary" type="button">Buscar</button>
         </div>
@@ -66,7 +66,7 @@
               <div class="row">
                 <div class="col text-center">
                   <div><a [routerLink]="['/ordenes/form/', orden.id]"><img class="iconosTamanio"
-                    src="../../assets/img/iconos/edit.png"></a></div>
+                        src="../../assets/img/iconos/edit.png"></a></div>
                 </div>
                 <div class="col text-center">
                   <div><a style="cursor: pointer" (click)='delete(orden)'><img class="iconosTamanio"
@@ -77,9 +77,9 @@
                         src="../../assets/img/iconos/print.png"></a></div>
                 </div>
                 <div class="col text-center">
-                  <div><a style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter"><img class="iconosTamanio"
-                        src="../../assets/img/iconos/salida.png"></a>
-                      </div>
+                  <div><a style="cursor: pointer" (click)='obtenerIdSalida(orden)' data-toggle="modal" data-target="#salidaModal"><img
+                        class="iconosTamanio" src="../../assets/img/iconos/salida.png"></a>
+                  </div>
                 </div>
               </div>
             </td>
@@ -94,30 +94,31 @@
 </div>
 
 <!-- Inicio pop Finalizar orden -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="salidaModal" tabindex="-1" role="dialog" aria-labelledby="salidaModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Finalizar Orden</h5>
+        <h5 class="modal-title" id="salidaModalLongTitle">Finalizar Orden</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <div class="form-group col-sm">
-              <label for="valor" style="font-weight: bold;" class="col-form-label">Valor de los repuestos usados:</label>
-              <div class="col-sm-6"></div>
-              <input type="number" class="form-control" name="valor" required>
-            </div>
-            <div class="form-group col-sm">
-                <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha de salida:</label>
-                <div class="col-sm-6"></div>
-                <input type="date" class="form-control" name="fecha" required>
-              </div>
+        <div class="form-group col-sm">
+          <label for="valor" style="font-weight: bold;" class="col-form-label">Valor de los repuestos usados:</label>
+          <div class="col-sm-6"></div>
+          <input type="number" class="form-control" name="valor" required>
+        </div>
+        <div class="form-group col-sm">
+          <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha de salida:</label>
+          <div class="col-sm-6"></div>
+          <input type="date" class="form-control" name="fecha" required>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button type="submit" class="btn btn-primary" (click)='generarSalida()'>Aceptar</button>
       </div>
     </div>
   </div>

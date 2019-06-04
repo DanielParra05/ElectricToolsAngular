@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Orden } from './orden';
 import { OrdenService } from './orden.service';
-import Swal from 'sweetalert2';
+import swal from 'sweetalert2';
 import * as jsPDF from 'jspdf';
 import { Ajustes } from '../ajustes/ajustes';
 
@@ -14,8 +14,13 @@ import { Ajustes } from '../ajustes/ajustes';
 export class OrdenComponent implements OnInit {
 
   public ordenes: Orden[];
-  
+  public ordenSalida: Orden;
+
   constructor(private ordenService: OrdenService) {
+  }
+
+  obtenerIdSalida(orden: Orden) {
+    this.ordenSalida = orden;
   }
 
   ngOnInit() {
@@ -24,18 +29,21 @@ export class OrdenComponent implements OnInit {
     );
   }
 
+  generarSalida(): void {
+    this.ordenService.update(this.ordenSalida).subscribe(
+      json => {
+        swal.fire('Acción ejecutada!', '', 'success');
+      });
+  }
+
   print(orden: Orden): void {
     const doc = new jsPDF();
     doc.text('Epa colombia', 10, 10);
     doc.save('supongoQueEsteEsEl-Nombre.pdf');
   }
 
-  openPop():void {
-
-  }
-
   delete(orden: Orden): void {
-    const swalWithBootstrapButtons = Swal.mixin({
+    const swalWithBootstrapButtons = swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
         cancelButton: 'btn btn-danger'

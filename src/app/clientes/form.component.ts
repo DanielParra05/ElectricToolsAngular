@@ -27,6 +27,7 @@ export class FormComponent implements OnInit {
         this.clienteService.getCliente(id).subscribe((cliente) => this.cliente = cliente);
       }
     });
+    console.log(this.cliente);
   }
 
   public create(): void {

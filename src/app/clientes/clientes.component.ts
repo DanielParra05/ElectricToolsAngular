@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
+
   constructor(private clienteService: ClienteService) {
   }
 
