@@ -53,6 +53,7 @@
             <th style="text-align: center">Cliente</th>
             <th style="text-align: center">Fecha Ingreso</th>
             <th style="text-align: center">Valor</th>
+            <th style="text-align: center">Estado</th>
             <th style="text-align: center">Acciones</th>
           </tr>
         </thead>
@@ -62,6 +63,7 @@
             <td class="text-center" style="color: black">{{orden.cliente.nombre}} {{orden.cliente.apellido}}</td>
             <td class="text-center" style="color: black">{{orden.fechaEntrada}}</td>
             <td class="text-center" style="color: black">$ {{orden.valorArreglo}}</td>
+            <td class="text-center" style="color: black">{{orden.estado}}</td>
             <td>
               <div class="row">
                 <div class="col text-center">
@@ -77,8 +79,9 @@
                         src="../../assets/img/iconos/print.png"></a></div>
                 </div>
                 <div class="col text-center">
-                  <div><a style="cursor: pointer" (click)='obtenerIdSalida(orden)' data-toggle="modal" data-target="#salidaModal"><img
-                        class="iconosTamanio" src="../../assets/img/iconos/salida.png"></a>
+                  <div><a style="cursor: pointer" (click)='obtenerOrdenSalida(orden)' data-toggle="modal"
+                      data-target="#salidaModal"><img class="iconosTamanio"
+                        src="../../assets/img/iconos/salida.png"></a>
                   </div>
                 </div>
               </div>
@@ -94,7 +97,7 @@
 </div>
 
 <!-- Inicio pop Finalizar orden -->
-<div class="modal fade" id="salidaModal" tabindex="-1" role="dialog" aria-labelledby="salidaModalCenterTitle"
+<div mdbModal class="modal fade" id="salidaModal" tabindex="-1" role="dialog" aria-labelledby="salidaModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -106,14 +109,23 @@
       </div>
       <div class="modal-body">
         <div class="form-group col-sm">
-          <label for="valor" style="font-weight: bold;" class="col-form-label">Valor de los repuestos usados:</label>
+          <label for="valorArreglo" style="font-weight: bold;" class="col-form-label">Valor del arreglo:</label>
           <div class="col-sm-6"></div>
-          <input type="number" class="form-control" name="valor" required>
+          <input [(ngModel)]="ordenSalida.valorArreglo" type="number" class="form-control" name="valorArreglo"
+            #valorArreglo="ngModel">
+        </div>
+        <div class="form-group col-sm">
+          <label for="valorRepuestos" style="font-weight: bold;" class="col-form-label">Valor de los repuestos
+            usados:</label>
+          <div class="col-sm-6"></div>
+          <input [(ngModel)]="ordenSalida.valorRepuestos" type="number" class="form-control" name="valorRepuestos"
+            #valorRepuestos="ngModel">
         </div>
         <div class="form-group col-sm">
           <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha de salida:</label>
           <div class="col-sm-6"></div>
-          <input type="date" class="form-control" name="fecha" required>
+          <input [(ngModel)]="ordenSalida.fechaSalida" type="date" class="form-control" name="fechSalida"
+            #fechSalida="ngModel">
         </div>
       </div>
       <div class="modal-footer">
@@ -124,3 +136,7 @@
   </div>
 </div>
 <!--Aqui Termina el popup-->
+
+<div id="divSalida">
+<div>TEST</div>
+</div>

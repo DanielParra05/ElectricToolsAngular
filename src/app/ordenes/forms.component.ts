@@ -42,7 +42,6 @@ export class FormsComponent implements OnInit, AfterViewInit {
         this.ordenService.getOrden(id).subscribe((orden) => this.orden = orden);
       }
     });
-    console.log(this.orden);
   }
 
   public create(): void {
