@@ -70,9 +70,9 @@ export class OrdenComponent implements OnInit {
       doc.line(10, 35, 200, 35);
       doc.text(10, 40, 'Problema reportado: ' + ordenSeleccionada.problemaReportado);
       doc.text(10, 45, 'Observaciones: ' + (ordenSeleccionada.observaciones != null ?
-                        ordenSeleccionada.observaciones : 'No Observaciones') );
+        ordenSeleccionada.observaciones : 'No Observaciones'));
       doc.text(10, 50, 'Valor del Arreglo: ' + (ordenSeleccionada.valorArreglo != null ?
-              ('$' + ordenSeleccionada.valorArreglo) : 'No definido aún'));
+        ('$' + ordenSeleccionada.valorArreglo) : 'No definido aún'));
       doc.line(10, 51, 200, 51);
       doc.setFontType('bold');
       doc.text(10, 56, (this.ajustes.txtPiePagina != null) ? this.ajustes.txtPiePagina : 'No Data');
@@ -96,9 +96,9 @@ export class OrdenComponent implements OnInit {
       doc.line(10, 35, 200, 35);
       doc.text(10, 40, 'Problema reportado: ' + ordenSeleccionada.problemaReportado);
       doc.text(10, 45, 'Observaciones: ' + (ordenSeleccionada.observaciones != null ?
-              ordenSeleccionada.observaciones : 'No Observaciones') );
+        ordenSeleccionada.observaciones : 'No Observaciones'));
       doc.text(10, 50, 'Valor del Arreglo: ' + (ordenSeleccionada.valorArreglo != null ?
-              ('$' + ordenSeleccionada.valorArreglo) : 'No definido aún'));
+        ('$' + ordenSeleccionada.valorArreglo) : 'No definido aún'));
       doc.line(10, 51, 200, 51);
       doc.setFontType('bold');
       doc.setFontSize(9);

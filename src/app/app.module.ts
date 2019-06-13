@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { OrdenComponent } from './ordenes/orden.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
+import { ContabilidadComponent } from './contabilidad/contabilidad.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'ordenes', component: OrdenComponent },
   { path: 'ordenes/form/:id', component: FormsComponent},
   { path: 'ordenes/form', component: FormsComponent},
+  { path: 'contabilidad', component: ContabilidadComponent},
   { path: 'ajustes', component: AjustesComponent}
 ];
 
@@ -39,6 +41,7 @@ const routes: Routes = [
     HomeComponent,
     OrdenComponent,
     AjustesComponent,
+    ContabilidadComponent,
    
   ],
   imports: [
