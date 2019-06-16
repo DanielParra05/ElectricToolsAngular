@@ -44,21 +44,56 @@
             <div class="col-sm">
               <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha Inicio:</label>
 
-              <input [(ngModel)]="fechaInicioDate" type="date" class="form-control" name="fechaInicio" required
+              <input [(ngModel)]="fechaEntrada" type="date" class="form-control" name="fechaInicio" required
                 #fechaInicio="ngModel">
             </div>
             <div class="col-sm">
               <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha Fin:</label>
 
-              <input [(ngModel)]="fechaFinDate" type="date" class="form-control" name="fechaFin" required
+              <input [(ngModel)]="fechaSalida" type="date" class="form-control" name="fechaFin" required
                 #fechaFin="ngModel">
             </div>
           </div>
         </div>
         <div class="text-center" style="padding-top: 1%;">
-          <button type="button" class="btn btn-success">Ver Reporte</button>
+          <button type="button" class="btn btn-success" (click)='generarSalida()'>Ver Reporte</button>
         </div>
       </form>
+      <div class="container">
+        <div class="row">
+            <div class="col-sm">
+          <label style="font-weight: bold;" class="col-form-label">Total en arreglos: </label>
+          <label style="padding-inline-start: 2%;">${{totalValorArreglos}}</label>
+        </div>
+        <div class="col-sm">
+            <label style="font-weight: bold;" class="col-form-label">Total en repuestos: </label>
+            <label style="padding-inline-start: 2%;">${{totalValorRepuestos}}</label>
+        </div>
+        <div class="col-sm">
+            <label style="font-weight: bold;" class="col-form-label">Ganancia acumulada: </label>
+            <label style="padding-inline-start: 2%;">${{totalValorArreglos - totalValorRepuestos}}</label>
+        </div>
+          </div>
+      </div>
+      <table id="table" class="table table-bordered table-striped" style="padding-top: 1%;">
+        <thead class="thead-dark">
+          <tr>
+            <th style="text-align: center">Orden</th>
+            <th style="text-align: center">Valor Arreglo</th>
+            <th style="text-align: center">Valor Repuesto</th>
+            <th style="text-align: center">Fecha Entrega</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let orden of ordenes">
+            <td class="text-center" style="color: black">{{orden.id}}</td>
+            <td class="text-center" style="color: black">${{orden.valorArreglo}}</td>
+            <td class="text-center" style="color: black">${{orden.valorRepuestos}}</td>
+            <td class="text-center" style="color: black">{{orden.fechaSalida}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>
