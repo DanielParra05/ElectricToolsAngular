@@ -42,7 +42,6 @@ const routes: Routes = [
     OrdenComponent,
     AjustesComponent,
     ContabilidadComponent,
-   
   ],
   imports: [
     BrowserModule,
