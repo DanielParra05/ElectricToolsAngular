@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class HeaderComponent {
-  variable = 'Hola amiguitos';
+  variable = 'Herramientas Eléctricas';
 }
