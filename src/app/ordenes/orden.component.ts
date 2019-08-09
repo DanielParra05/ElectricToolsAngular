@@ -16,6 +16,7 @@ export class OrdenComponent implements OnInit {
   public ordenes: Orden[];
   public ajustes: Ajustes;
   public ordenSalida: Orden = new Orden();
+  public campoBusqueda: String;
 
   constructor(private ordenService: OrdenService, private ajustesService: AjusteService) {
   }
@@ -27,6 +28,16 @@ export class OrdenComponent implements OnInit {
    */
   obtenerOrdenSalida(orden: Orden) {
     this.ordenSalida = orden;
+  }
+
+  /**
+   * Se ejecuta al accionar el boton de busqueda del
+   * menu de registro
+   */
+  accionBotonBusqueda(){
+    if (this.campoBusqueda.trim() == "" || this.campoBusqueda == null ) {
+        swal.fire('Error', 'Ingrese un número de orden, nombre o c&#233;dula de un cliente.', 'error');
+      }
   }
 
   ngOnInit() {
