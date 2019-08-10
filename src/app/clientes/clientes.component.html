@@ -34,10 +34,11 @@
         <button class="btn btn-primary btn-lg" type="button" [routerLink]="['/clientes/form']">Nuevo Cliente</button>
       </div>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="(Nombre o C&#233;dula)" aria-label="Recipient's username"
+        <input type="text" [(ngModel)]="campoBusqueda" class="form-control" placeholder="(Nombre o C&#233;dula)" aria-label="Recipient's username"
           aria-describedby="basic-addon2">
         <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button">Buscar</button>
+          <button class="btn btn-outline-success" (click)='buscarClientes()' type="button">Buscar</button>
+          <button class="btn btn-outline-primary" (click)='getAllClientes()' type="button">Limpiar</button>
         </div>
       </div>
       <div class="table-responsive">

@@ -30,6 +30,12 @@ export class ClienteService {
     );
   }
 
+  buscarCliente(campoBusqueda: string): Observable<Cliente[]> {
+    return this.http.get(this.urlEndPoint + '/busqueda/' + campoBusqueda).pipe(
+      map((response) => response as Cliente[])
+    );
+  }
+
   create(cliente: Cliente): Observable<Cliente> {
     return this.http.post(this.urlEndPoint, cliente, { headers: this.httpHeaders }).pipe(
       map((response: any) => response.cliente as Cliente),

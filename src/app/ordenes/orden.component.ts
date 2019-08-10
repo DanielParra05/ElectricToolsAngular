@@ -16,7 +16,7 @@ export class OrdenComponent implements OnInit {
   public ordenes: Orden[];
   public ajustes: Ajustes;
   public ordenSalida: Orden = new Orden();
-  public campoBusqueda: String;
+  public campoBusqueda: string;
 
   constructor(private ordenService: OrdenService, private ajustesService: AjusteService) {
   }
@@ -30,21 +30,30 @@ export class OrdenComponent implements OnInit {
     this.ordenSalida = orden;
   }
 
-  /**
-   * Se ejecuta al accionar el boton de busqueda del
-   * menu de registro
-   */
-  accionBotonBusqueda(){
-    if (this.campoBusqueda.trim() == "" || this.campoBusqueda == null ) {
-        swal.fire('Error', 'Ingrese un número de orden, nombre o c&#233;dula de un cliente.', 'error');
-      }
-  }
 
   ngOnInit() {
     this.ajustesService.getAjustes().subscribe((ajustes) => this.ajustes = ajustes);
+    this.getAllOrdenes();
+  }
+
+  getAllOrdenes() {
+    this.campoBusqueda = '';
     this.ordenService.getOrdenes().subscribe(
       ordenes => this.ordenes = ordenes
     );
+  }
+
+  /**
+   * Buscar Orden segun el parametro enviado
+   */
+  filtrarOrden() {
+    if (this.campoBusqueda == null || this.campoBusqueda.trim() === '') {
+      swal.fire('Error', 'Ingrese un número de orden, nombre o c&#233;dula de un cliente.', 'error');
+    } else {
+      this.ordenService.buscarOrden(this.campoBusqueda).subscribe(
+        ordenes => this.ordenes = ordenes
+      );
+    }
   }
 
   generarSalida(): void {

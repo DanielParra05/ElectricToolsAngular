@@ -22,6 +22,12 @@ export class OrdenService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  buscarOrden(campoBusqueda: string): Observable<Orden[]> {
+    return this.http.get(this.urlEndPoint + '/busqueda/' + campoBusqueda).pipe(
+      map((response) => response as Orden[])
+    );
+  }
+
   getOrdenes(): Observable<Orden[]> {
     return this.http.get(this.urlEndPoint).pipe(
       map((response) => response as Orden[])

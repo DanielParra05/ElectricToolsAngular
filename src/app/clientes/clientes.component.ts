@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
-import Swal from 'sweetalert2';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-clientes',
@@ -10,18 +10,34 @@ import Swal from 'sweetalert2';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
+  campoBusqueda: string;
 
   constructor(private clienteService: ClienteService) {
   }
 
   ngOnInit() {
+    this.getAllClientes();
+  }
+
+  getAllClientes() {
     this.clienteService.getClientes().subscribe(
       clientes => this.clientes = clientes
     );
+    this.campoBusqueda = '';
+  }
+
+  buscarClientes() {
+    if (this.campoBusqueda == null || this.campoBusqueda.trim() === '') {
+      swal.fire('Error', 'Ingrese nombre o c&#233;dula de un cliente.', 'error');
+    } else {
+      this.clienteService.buscarCliente(this.campoBusqueda).subscribe(
+        clientes => this.clientes = clientes
+      );
+    }
   }
 
   delete(cliente: Cliente): void {
-    const swalWithBootstrapButtons = Swal.mixin({
+    const swalWithBootstrapButtons = swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
         cancelButton: 'btn btn-danger'
@@ -40,12 +56,12 @@ export class ClientesComponent implements OnInit {
       if (result.value) {
         this.clienteService.delete(cliente.id).subscribe(
           response =>
-          this.clientes = this.clientes.filter(cli => cli !== cliente));
+            this.clientes = this.clientes.filter(cli => cli !== cliente));
         swalWithBootstrapButtons.fire(
-              'Eliminado!',
-              'El cliente ha sido eliminado.',
-              'success'
-          );
+          'Eliminado!',
+          'El cliente ha sido eliminado.',
+          'success'
+        );
       }
     });
   }
