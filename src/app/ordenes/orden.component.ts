@@ -137,7 +137,7 @@ export class OrdenComponent implements OnInit {
     });
     swalWithBootstrapButtons.fire({
       title: 'Estas seguro?',
-      text: `¿Desea eliminar la orden ${orden.nombreArticulo}?`,
+      text: `¿Desea eliminar la orden ${orden.id}?`,
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si, eliminar!',
@@ -150,7 +150,7 @@ export class OrdenComponent implements OnInit {
             this.ordenes = this.ordenes.filter(cli => cli !== orden));
         swalWithBootstrapButtons.fire(
           'Eliminado!',
-          'El cliente ha sido eliminado.',
+          `La orden ${orden.id} ha sido eliminada.`,
           'success'
         );
       }

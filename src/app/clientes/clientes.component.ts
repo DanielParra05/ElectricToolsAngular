@@ -59,7 +59,7 @@ export class ClientesComponent implements OnInit {
             this.clientes = this.clientes.filter(cli => cli !== cliente));
         swalWithBootstrapButtons.fire(
           'Eliminado!',
-          'El cliente ha sido eliminado.',
+          'El cliente '+cliente.nombre+' '+cliente.apellido+' ha sido eliminado.',
           'success'
         );
       }

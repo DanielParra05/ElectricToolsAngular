@@ -23,7 +23,7 @@ export class FormsComponent implements OnInit, AfterViewInit {
   }
 
   constructor(private clienteService: ClienteService, private ordenService: OrdenService,
-              private router: Router, private activatedRoute: ActivatedRoute) {
+    private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class FormsComponent implements OnInit, AfterViewInit {
       clientes => {
         this.listClientes = clientes;
       }
-      );
+    );
     this.cargarOrden();
   }
 
@@ -50,8 +50,8 @@ export class FormsComponent implements OnInit, AfterViewInit {
     this.ordenService.create(this.orden).subscribe(
       orden => {
         this.router.navigate(['/ordenes']);
-        swal.fire('Orden guardada', 'La orden' + orden.id + 'con cliente'
-          + orden.cliente.nombre + ' ha sido creado con exito!', 'success');
+        swal.fire('Orden guardada', 'La orden ' + orden.id + ' para el cliente '
+          + orden.cliente.nombre + ' ' + orden.cliente.apellido + ' ha sido creada con exito!', 'success');
       }
     );
   }
@@ -61,13 +61,13 @@ export class FormsComponent implements OnInit, AfterViewInit {
     this.ordenService.update(this.orden).subscribe(
       json => {
         this.router.navigate(['/ordenes']);
-        swal.fire('Orden actualizada', `${json.mensaje}: ${json.orden.id_orden}`, 'success');
+        swal.fire('Orden actualizada', `Orden ${json.orden.id} actualizada exitosamente`, 'success');
       });
   }
 
   compararCliente(obj1: Cliente, obj2: Cliente): boolean {
     if (obj1 === undefined && obj2 === undefined) {
-        return true;
+      return true;
     }
     return obj1 === undefined || obj2 === undefined || obj1 === null || obj2 === null ? false : obj1.id === obj2.id;
   }
