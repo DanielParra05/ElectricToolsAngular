@@ -32,7 +32,7 @@
   <div class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
     <div class="card-header bg-dark text-white" style="text-align: center; font-weight: bold;">Cliente</div>
     <div class="card-body">
-      <form>
+      <form #clienteForm="ngForm" >
         <div class="container">
           <div class="row">
             <div class="form-group col-sm">
@@ -88,9 +88,9 @@
         </div>
         <div class="text-center">
           <button class="btn btn-primary btn-lg" role="button" (click)='create()'
-            *ngIf="!cliente.id; else elseBlock">Crear</button>
+            *ngIf="!cliente.id; else elseBlock" [disabled]="!clienteForm.form.valid">Crear</button>
           <ng-template #elseBlock>
-            <button class="btn btn-primary btn-lg" role="button" (click)='update()'>Aceptar</button>
+            <button class="btn btn-primary btn-lg" role="button" (click)='update()' [disabled]="!clienteForm.form.valid">Aceptar</button>
           </ng-template>
         </div>
       </form>

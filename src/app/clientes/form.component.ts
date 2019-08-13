@@ -31,8 +31,8 @@ export class FormComponent implements OnInit {
   }
 
   public create(): void {
-    console.log('Clicked');
-    console.log(this.cliente);
+    //console.log('Clicked');
+    //console.log(this.cliente);
     this.clienteService.create(this.cliente).subscribe(
       cliente => {
         this.router.navigate(['/clientes']);

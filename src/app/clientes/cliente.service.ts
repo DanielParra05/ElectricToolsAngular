@@ -61,7 +61,7 @@ export class ClienteService {
   public update(cliente: Cliente): Observable<any> {
     return this.http.put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, { headers: this.httpHeaders }).pipe(
       catchError(e => {
-        this.router.navigate(['/clientes']);
+        //this.router.navigate(['/clientes']);
         console.error(e.error.mensaje);
         swal.fire('Error al actualizar', e.error.mensaje, 'error');
         return throwError(e);
