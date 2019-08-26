@@ -15,11 +15,13 @@ import { HomeComponent } from './home/home.component';
 import { OrdenComponent } from './ordenes/orden.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
 import { ContabilidadComponent } from './contabilidad/contabilidad.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Home
   { path: 'clientes', component: ClientesComponent },
+  { path: 'clientes/page/:page', component: ClientesComponent },
   { path: 'clientes/form', component: FormComponent },
   { path: 'home', component: HomeComponent },
   { path: 'clientes/form/:id', component: FormComponent },
@@ -42,6 +44,7 @@ const routes: Routes = [
     OrdenComponent,
     AjustesComponent,
     ContabilidadComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,

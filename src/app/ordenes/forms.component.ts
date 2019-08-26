@@ -27,7 +27,7 @@ export class FormsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.clienteService.getClientes().subscribe(
+    this.clienteService.getAllClientes().subscribe(
       clientes => {
         this.listClientes = clientes;
       }
