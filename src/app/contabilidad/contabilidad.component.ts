@@ -22,8 +22,8 @@ export class ContabilidadComponent implements OnInit {
   }
 
   generarSalida(): void {
-    console.log(this.fechaEntrada);
-    console.log(this.fechaSalida);
+    //console.log(this.fechaEntrada);
+    //console.log(this.fechaSalida);
     // Peticion para generar la tabla de las ordenes, segun las fechas seleccioandas
     this.contabilidadService.getContabilidad(this.fechaEntrada, this.fechaSalida).subscribe(
       ordenes => this.ordenes = ordenes

@@ -45,8 +45,8 @@ export class FormsComponent implements OnInit, AfterViewInit {
   }
 
   public create(): void {
-    console.log('Clicked');
-    console.log(this.orden);
+    //console.log('Clicked');
+    //console.log(this.orden);
     this.ordenService.create(this.orden).subscribe(
       orden => {
         this.router.navigate(['/ordenes']);

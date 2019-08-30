@@ -26,8 +26,8 @@ export class AjustesComponent implements OnInit {
   }
 
   public save(): void {
-    console.log('Clicked');
-    console.log(this.ajustes);
+   // console.log('Clicked');
+   // console.log(this.ajustes);
     this.ajustesService.create(this.ajustes).subscribe(
       cliente => {
         this.router.navigate(['/ajustes']);

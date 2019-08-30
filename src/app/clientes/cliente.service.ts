@@ -34,7 +34,7 @@ export class ClienteService {
     return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
       map((response: any) => {
         (response.content as Cliente[]).map(cliente => {
-          cliente.nombre = cliente.nombre.toUpperCase();
+          //cliente.nombre = cliente.nombre.toUpperCase();
           //let datePipe = new DatePipe('es');
           //cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
           //cliente.createAt = formatDate(cliente.createAt, 'dd-MM-yyyy', 'es');
@@ -45,9 +45,18 @@ export class ClienteService {
     );
   }
 
-  buscarCliente(campoBusqueda: string): Observable<Cliente[]> {
-    return this.http.get(this.urlEndPoint + '/busqueda/' + campoBusqueda).pipe(
-      map((response) => response as Cliente[])
+  buscarCliente(campoBusqueda: string, page: number): Observable<any> {
+    return this.http.get(this.urlEndPoint + '/busqueda/' + campoBusqueda + '/' + page).pipe(
+      map((response: any) => {
+        (response.content as Cliente[]).map(cliente => {
+          //cliente.nombre = cliente.nombre.toUpperCase();
+          //let datePipe = new DatePipe('es');
+          //cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
+          //cliente.createAt = formatDate(cliente.createAt, 'dd-MM-yyyy', 'es');
+          return cliente;
+        });
+        return response;
+      })
     );
   }
 
