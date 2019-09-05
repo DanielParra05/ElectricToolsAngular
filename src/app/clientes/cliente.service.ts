@@ -46,6 +46,7 @@ export class ClienteService {
   }
 
   buscarCliente(campoBusqueda: string, page: number): Observable<any> {
+    console.log('Se entra a busqueda ----> '+this.urlEndPoint + '/busqueda/' + campoBusqueda + '/' + page);
     return this.http.get(this.urlEndPoint + '/busqueda/' + campoBusqueda + '/' + page).pipe(
       map((response: any) => {
         (response.content as Cliente[]).map(cliente => {

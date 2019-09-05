@@ -23,20 +23,14 @@ export class ClientesComponent implements OnInit {
   }
 
   getAllClientes() {
+    this.campoBusqueda = '';
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
-
       if (!page) {
         page = 0;
       }
-
       this.clienteService.getClientes(page)
-        .pipe(
-          tap(response => {
-           // console.log('ClientesComponent: tap 3');
-           // (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
-          })
-        ).subscribe(response => {
+        .pipe().subscribe(response => {
           this.clientes = response.content as Cliente[];
           this.paginador = response;
         });
@@ -47,9 +41,17 @@ export class ClientesComponent implements OnInit {
     if (this.campoBusqueda == null || this.campoBusqueda.trim() === '') {
       swal.fire('Error', 'Ingrese nombre o c&#233;dula de un cliente.', 'error');
     } else {
-      this.clienteService.buscarCliente(this.campoBusqueda).subscribe(
-        clientes => this.clientes = clientes
-      );
+      this.activatedRoute.paramMap.subscribe(params => {
+        let page: number = +params.get('page');
+        if (!page) {
+          page = 0;
+        }
+        this.clienteService.buscarCliente(this.campoBusqueda, page)
+          .pipe().subscribe(response => {
+            this.clientes = response.content as Cliente[];
+            this.paginador = response;
+          });
+      });
     }
   }
 
@@ -76,7 +78,7 @@ export class ClientesComponent implements OnInit {
             this.clientes = this.clientes.filter(cli => cli !== cliente));
         swalWithBootstrapButtons.fire(
           'Eliminado!',
-          'El cliente '+cliente.nombre+' '+cliente.apellido+' ha sido eliminado.',
+          'El cliente ' + cliente.nombre + ' ' + cliente.apellido + ' ha sido eliminado.',
           'success'
         );
       }

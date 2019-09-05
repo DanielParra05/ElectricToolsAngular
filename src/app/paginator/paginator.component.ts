@@ -32,7 +32,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
     this.hasta = Math.max(Math.min(this.paginador.totalPages, this.paginador.number + 4), 6);
     this.desde = this.hasta-5;
 
-    console.log('desde: '+this.desde+' / hasta: '+this.hasta);
+    //console.log('desde: '+this.desde+' / hasta: '+this.hasta);
 
     if (this.paginador.totalPages > 5) {
       this.paginas = new Array(this.hasta - this.desde + 1).fill(0).map((_valor, indice) => indice + this.desde);
