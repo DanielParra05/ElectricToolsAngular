@@ -12,47 +12,51 @@ import { ActivatedRoute } from '@angular/router';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
+  campoBusquedaTemp: string;
   campoBusqueda: string;
+  isLimpiandoBuscando: boolean;
   paginador: any;
 
   constructor(private clienteService: ClienteService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getAllClientes();
+    this.isLimpiandoBuscando = false;
+    this.getClientes();
   }
 
-  getAllClientes() {
-    this.campoBusqueda = '';
+  buscar() {
+    if (this.campoBusquedaTemp == null || this.campoBusquedaTemp.trim() === '') {
+      swal.fire('Error', 'Ingrese nombre o c&#233;dula de un cliente.', 'error');
+    } else {
+      this.campoBusqueda = this.campoBusquedaTemp;
+      this.isLimpiandoBuscando = true; //Para que el indice de paginador quede en cero
+      this.getClientes();
+    }
+  }
+
+  limpiar() {
+    this.campoBusqueda = null;
+    this.campoBusquedaTemp = null;
+    this.isLimpiandoBuscando = true; //Para que el indice de paginador quede en cero
+    this.getClientes();
+  }
+
+  getClientes() {
+    console.log(this.isLimpiandoBuscando);
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page');
-      if (!page) {
+      if (!page || this.isLimpiandoBuscando) {
         page = 0;
+        this.isLimpiandoBuscando = false;
       }
-      this.clienteService.getClientes(page)
+
+      this.clienteService.getClientes(page, this.campoBusqueda)
         .pipe().subscribe(response => {
           this.clientes = response.content as Cliente[];
           this.paginador = response;
         });
     });
-  }
-
-  buscarClientes() {
-    if (this.campoBusqueda == null || this.campoBusqueda.trim() === '') {
-      swal.fire('Error', 'Ingrese nombre o c&#233;dula de un cliente.', 'error');
-    } else {
-      this.activatedRoute.paramMap.subscribe(params => {
-        let page: number = +params.get('page');
-        if (!page) {
-          page = 0;
-        }
-        this.clienteService.buscarCliente(this.campoBusqueda, page)
-          .pipe().subscribe(response => {
-            this.clientes = response.content as Cliente[];
-            this.paginador = response;
-          });
-      });
-    }
   }
 
   delete(cliente: Cliente): void {
