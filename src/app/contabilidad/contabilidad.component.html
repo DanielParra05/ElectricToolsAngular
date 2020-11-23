@@ -1,0 +1,94 @@
+<!-- ******Inicio ****** -->
+<div class="breadcumb-area" style="background-image: url(assets/img/modulos-img/cabecera1.jpg);">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12">
+        <div class="bradcumb-title text-center">
+          <h2>Contabilidad</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ****** Fin Encabezado ****** -->
+
+<div class="breadcumb-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contabilidad</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Inicia Formulario de ordenes -->
+<div class="container">
+  <div class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
+    <div class="card-header bg-dark text-white" style="text-align: center; font-weight: bold;">Ingresos y Egresos</div>
+    <div class="card-body">
+      <form>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha Inicio:</label>
+
+              <input [(ngModel)]="fechaEntrada" type="date" class="form-control" name="fechaInicio" required
+                #fechaInicio="ngModel">
+            </div>
+            <div class="col-sm">
+              <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha Fin:</label>
+
+              <input [(ngModel)]="fechaSalida" type="date" class="form-control" name="fechaFin" required
+                #fechaFin="ngModel">
+            </div>
+          </div>
+        </div>
+        <div class="text-center" style="padding-top: 1%;">
+          <button type="button" class="btn btn-success" (click)='generarSalida()'>Ver Reporte</button>
+        </div>
+      </form>
+      <div class="container">
+        <div class="row">
+            <div class="col-sm">
+          <label style="font-weight: bold;" class="col-form-label">Total en arreglos: </label>
+          <label style="padding-inline-start: 2%;">${{totalValorArreglos}}</label>
+        </div>
+        <div class="col-sm">
+            <label style="font-weight: bold;" class="col-form-label">Total en repuestos: </label>
+            <label style="padding-inline-start: 2%;">${{totalValorRepuestos}}</label>
+        </div>
+        <div class="col-sm">
+            <label style="font-weight: bold;" class="col-form-label">Ganancia acumulada: </label>
+            <label style="padding-inline-start: 2%;">${{totalValorArreglos - totalValorRepuestos}}</label>
+        </div>
+          </div>
+      </div>
+      <div class="table-responsive">
+      <table id="table" class="table table-bordered table-striped" style="padding-top: 1%;">
+        <thead class="thead-dark">
+          <tr>
+            <th style="text-align: center">Orden</th>
+            <th style="text-align: center">Valor Arreglo</th>
+            <th style="text-align: center">Valor Repuesto</th>
+            <th style="text-align: center">Fecha Entrega</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let orden of ordenes">
+            <td class="text-center" style="color: black">{{orden.id}}</td>
+            <td class="text-center" style="color: black">${{orden.valorArreglo}}</td>
+            <td class="text-center" style="color: black">${{orden.valorRepuestos}}</td>
+            <td class="text-center" style="color: black">{{orden.fechaSalida}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+    </div>
+  </div>
+</div>

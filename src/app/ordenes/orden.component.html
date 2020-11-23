@@ -1,0 +1,144 @@
+<!-- ****** Cabecera Start ****** -->
+<div class="breadcumb-area" style="background-image: url(assets/img/modulos-img/cabecera5.jpg);">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12">
+        <div class="bradcumb-title text-center">
+          <h2>Ordenes</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ****** Cabecera End ****** -->
+<div class="breadcumb-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ordenes</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
+    <div class="card-body text-primary">
+      <div class="my-2 text-center">
+        <button class="btn btn-primary btn-lg" type="button" [routerLink]="['/ordenes/form']">Nueva Orden</button>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" [(ngModel)]="campoBusqueda" class="form-control"
+          placeholder="(Nombre, C&#233;dula o N&#186; de Orden)" aria-label="Recipient's username"
+          aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" (click)='filtrarOrden()' type="button">Buscar</button>
+          <button class="btn btn-outline-danger" (click)='getAllOrdenes()' type="button">Limpiar</button>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table id="table" class="table table-bordered table-striped" *ngIf="ordenes?.length>0">
+          <thead class="thead-dark">
+            <tr>
+              <th style="text-align: center">N&#186; de Orden</th>
+              <th style="text-align: center">Cliente</th>
+              <th style="text-align: center">Fecha Ingreso</th>
+              <th style="text-align: center">Valor</th>
+              <th style="text-align: center">Estado</th>
+              <th style="text-align: center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let orden of ordenes">
+              <td class="text-center" style="color: black">{{orden.id}}</td>
+              <td class="text-center" style="color: black">{{orden.cliente.nombre}} {{orden.cliente.apellido}}</td>
+              <td class="text-center" style="color: black">{{orden.fechaEntrada}}</td>
+              <td class="text-center" style="color: black">$ {{orden.valorArreglo}}</td>
+              <td class="text-center" style="color: black">{{orden.estado}}</td>
+              <td>
+                <div class="row">
+                  <div class="col text-center">
+                    <div><a [routerLink]="['/ordenes/form/', orden.id]"><img class="iconosTamanio"
+                          src="../../assets/img/iconos/edit.png"></a></div>
+                  </div>
+                  <div class="col text-center">
+                    <div><a style="cursor: pointer" (click)='delete(orden)'><img class="iconosTamanio"
+                          src="../../assets/img/iconos/delete.png"></a></div>
+                  </div>
+                  <div class="col text-center">
+                    <div><a style="cursor: pointer" (click)='print(orden)'><img class="iconosTamanio"
+                          src="../../assets/img/iconos/print.png"></a></div>
+                  </div>
+                  <div class="col text-center">
+                    <div><a style="cursor: pointer" (click)='obtenerOrdenSalida(orden)' data-toggle="modal"
+                        data-target="#salidaModal"><img class="iconosTamanio"
+                          src="../../assets/img/iconos/salida.png"></a>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="ordenes?.length==0" class="alert alert-info">
+        No hay registros en la base de datos.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Inicio pop Finalizar orden -->
+<div mdbModal class="modal fade" id="salidaModal" tabindex="-1" role="dialog" aria-labelledby="salidaModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="salidaModalLongTitle">Finalizar Orden</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group col-sm">
+          <label for="valorArreglo" style="font-weight: bold;" class="col-form-label">Valor del arreglo:</label>
+          <div class="col-sm-6"></div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">$</span>
+            </div>
+            <input type="number" class="form-control" aria-describedby="basic-addon1" name="valorArreglo"
+              #valorArreglo="ngModel" [(ngModel)]="ordenSalida.valorArreglo">
+          </div>
+        </div>
+        <div class="form-group col-sm">
+          <label for="valorRepuestos" style="font-weight: bold;" class="col-form-label">Valor de los repuestos
+            usados:</label>
+          <div class="col-sm-6"></div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">$</span>
+            </div>
+            <input type="number" class="form-control" aria-describedby="basic-addon1" name="valorRepuestos"
+              #valorRepuestos="ngModel" [(ngModel)]="ordenSalida.valorRepuestos">
+          </div>
+        </div>
+        <div class="form-group col-sm">
+          <label for="marca" style="font-weight: bold;" class="col-form-label">Fecha de salida:</label>
+          <div class="col-sm-6"></div>
+          <input [(ngModel)]="ordenSalida.fechaSalida" type="date" class="form-control" name="fechSalida"
+            #fechSalida="ngModel">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" (click)='generarSalida()'>Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Aqui Termina el popup-->

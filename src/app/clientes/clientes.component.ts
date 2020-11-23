@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
-import Swal from 'sweetalert2';
+import swal from 'sweetalert2';
+import { tap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-clientes',
@@ -10,17 +12,55 @@ import Swal from 'sweetalert2';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
-  constructor(private clienteService: ClienteService) {
+  campoBusquedaTemp: string;
+  campoBusqueda: string;
+  isLimpiandoBuscando: boolean;
+  paginador: any;
+
+  constructor(private clienteService: ClienteService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.clienteService.getClientes().subscribe(
-      clientes => this.clientes = clientes
-    );
+    this.isLimpiandoBuscando = false;
+    this.getClientes();
+  }
+
+  buscar() {
+    if (this.campoBusquedaTemp == null || this.campoBusquedaTemp.trim() === '') {
+      swal.fire('Error', 'Ingrese nombre o c&#233;dula de un cliente.', 'error');
+    } else {
+      this.campoBusqueda = this.campoBusquedaTemp;
+      this.isLimpiandoBuscando = true; //Para que el indice de paginador quede en cero
+      this.getClientes();
+    }
+  }
+
+  limpiar() {
+    this.campoBusqueda = null;
+    this.campoBusquedaTemp = null;
+    this.isLimpiandoBuscando = true; //Para que el indice de paginador quede en cero
+    this.getClientes();
+  }
+
+  getClientes() {
+    console.log(this.isLimpiandoBuscando);
+    this.activatedRoute.paramMap.subscribe(params => {
+      let page: number = +params.get('page');
+      if (!page || this.isLimpiandoBuscando) {
+        page = 0;
+        this.isLimpiandoBuscando = false;
+      }
+
+      this.clienteService.getClientes(page, this.campoBusqueda)
+        .pipe().subscribe(response => {
+          this.clientes = response.content as Cliente[];
+          this.paginador = response;
+        });
+    });
   }
 
   delete(cliente: Cliente): void {
-    const swalWithBootstrapButtons = Swal.mixin({
+    const swalWithBootstrapButtons = swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
         cancelButton: 'btn btn-danger'
@@ -39,12 +79,12 @@ export class ClientesComponent implements OnInit {
       if (result.value) {
         this.clienteService.delete(cliente.id).subscribe(
           response =>
-          this.clientes = this.clientes.filter(cli => cli !== cliente));
+            this.clientes = this.clientes.filter(cli => cli !== cliente));
         swalWithBootstrapButtons.fire(
-              'Eliminado!',
-              'El cliente ha sido eliminado.',
-              'success'
-          );
+          'Eliminado!',
+          'El cliente ' + cliente.nombre + ' ' + cliente.apellido + ' ha sido eliminado.',
+          'success'
+        );
       }
     });
   }

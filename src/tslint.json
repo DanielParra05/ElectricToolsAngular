@@ -1,5 +1,6 @@
 {
   "extends": "../tslint.json",
+  "allowSyntheticDefaultImports": true,
   "rules": {
     "directive-selector": [
       true,
